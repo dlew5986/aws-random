@@ -1,9 +1,11 @@
 terraform {
   #required_version = ">= 0.13, < 0.14"
   backend "s3" {
-    bucket = "terraform-state-red"
-    key    = "global/s3/terraform.tfstate"
-    region = "us-east-2"
+    bucket         = "red-terraform-state"
+    encrypt        = true
+    key            = "network/terraform.tfstate"
+    region         = "us-east-2"
+    dynamodb_table = "red-terraform-state-locks"
   }
   required_providers {
     aws = {
