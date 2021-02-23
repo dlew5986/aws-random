@@ -28,11 +28,6 @@ resource "aws_s3_bucket" "red_terraform_state" {
       }
     }
   }
-
-  tags = {
-    Name = "Terraform state s3 bucket for red"
-  }
-
 }
 
 resource "aws_s3_bucket_public_access_block" "red_terraform_state_public_access" {
@@ -52,9 +47,5 @@ resource "aws_dynamodb_table" "red_terraform_locks" {
   attribute {
     name = "LockID"
     type = "S"
-  }
-
-  tags = {
-    Name = "Terraform state lock table for red"
   }
 }
